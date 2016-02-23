@@ -1,0 +1,16 @@
+﻿<Application x:Class="KonigLabs.CocaColaEvent.View.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:KonigLabs.CocaColaEvent.View">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Other/Mappings.xaml" />
+                <ResourceDictionary Source="Styles/CustomButton.xaml"/>
+                <ResourceDictionary Source="Styles/CustomListBox.xaml"/>
+                <ResourceDictionary Source="Styles/CustomStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

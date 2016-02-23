@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="KonigLabs.CocaColaEvent.View.Controls.SelectTypeCtl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KonigLabs.CocaColaEvent.View.Controls"
+             mc:Ignorable="d" 
+             Width="1080" Height="1920"
+             >
+    <Grid>
+        <Grid.Resources>
+            <Style x:Key="ItemTypeStyle" TargetType="ListBoxItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Grid>
+                                <Image Stretch="UniformToFill" Source="{Binding Image, UpdateSourceTrigger=PropertyChanged}"/>
+                                <Rectangle Fill="White" Opacity="0.5" x:Name="IsCheck" Visibility="Hidden">
+                                </Rectangle>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsSelected" Value="true">
+                                    <Setter TargetName="IsCheck" Property="Visibility" Value="Visible"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
+        <Grid.RenderTransform>
+            <ScaleTransform ScaleX="1" ScaleY="1">
+            </ScaleTransform>
+        </Grid.RenderTransform>
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://Application:,,,/Resources/activity_bg.png"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="450"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="690"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Image Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" Margin="55,70,0,0" HorizontalAlignment="Left" Stretch="Fill"/>
+        <!--Выбор майки-->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Image Source="pack://Application:,,,/Resources/men_head.png"/>
+            <TextBlock Padding="40,0,40,0" VerticalAlignment="Center" Style="{StaticResource BaseTextBox}">ВЫБЕРИ ФУТБОЛКУ</TextBlock>
+            <Image Source="pack://Application:,,,/Resources/women_head.png"/>
+        </StackPanel>
+        <ListBox ItemContainerStyle="{StaticResource ItemTypeStyle}" ItemsSource="{Binding TshortTypes}" VerticalAlignment="Center" Grid.Row="2" SelectedItem="{Binding SelectedTshortType}" HorizontalAlignment="Center" Style="{StaticResource CustomListBox}">
+        </ListBox>
+        <TextBlock Grid.Row="3" Style="{StaticResource EngLabel}" VerticalAlignment="Top" HorizontalAlignment="Center">CHOOSE YOUR T-SHIRT</TextBlock>
+        <!--Навигация-->
+        <Grid Grid.Row="4" HorizontalAlignment="Center" Margin="0,0,0,60">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="НАЗАД" Tag="BACK" Style="{StaticResource ButtonBack}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding Preview}"/>
+            <Button Grid.Column="1" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" Command="{Binding Next}" Margin="120,0,0,0"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

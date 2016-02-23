@@ -1,0 +1,88 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="ButtonBack" TargetType="{x:Type Button}" >
+        <Setter Property="Foreground" Value="#FFF" />
+        <Setter Property="FontSize" Value="115"/>
+        <Setter Property="FontFamily" Value="/KonigLabs.CocaColaEvent.View;component/Resources/#PF Din Text Pro"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" Margin="30,0,0,0" Text="{TemplateBinding Tag}" FontSize="50" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" Grid.Row="1"/>
+                        <TextBlock Grid.Column="1" Margin="30,0,0,0"
+                                Padding="{TemplateBinding Padding}"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="{TemplateBinding Foreground}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextWrapping="Wrap" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <Image Source="pack://Application:,,,/Resources/navigate_back.png" Width="63" Height="115" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonForward" TargetType="{x:Type Button}" >
+        <Setter Property="Foreground" Value="#FFF" />
+        <Setter Property="FontSize" Value="115"/>
+        <Setter Property="FontFamily" Value="/KonigLabs.CocaColaEvent.View;component/Resources/#PF Din Text Pro"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="0,0,30,0" Text="{TemplateBinding Tag}" FontSize="40" HorizontalAlignment="Right" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" Grid.Row="1"/>
+                        <TextBlock Margin="0,0,30,0"
+                                Padding="{TemplateBinding Padding}"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="{TemplateBinding Foreground}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextWrapping="Wrap" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ButtonForwardNoTag" TargetType="{x:Type Button}" >
+        <Setter Property="Foreground" Value="#FFF" />
+        <Setter Property="FontSize" Value="115"/>
+        <Setter Property="FontFamily" Value="/KonigLabs.CocaColaEvent.View;component/Resources/#PF Din Text Pro"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                                Padding="{TemplateBinding Padding}"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="{TemplateBinding Foreground}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextWrapping="Wrap" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
