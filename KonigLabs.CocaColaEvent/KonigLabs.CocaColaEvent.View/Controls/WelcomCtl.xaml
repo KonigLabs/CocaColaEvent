@@ -14,22 +14,28 @@
         <Grid.Background>
             <ImageBrush ImageSource="pack://Application:,,,/Resources/backgroud_start.png"/>
         </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="450"/>
-            <RowDefinition/>
-            <RowDefinition Height="400"/>
-        </Grid.RowDefinitions>
-        <Image Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" Margin="55,70,0,0" HorizontalAlignment="Left" Stretch="Fill"/>
-        <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Button Command="{Binding StartCommand}" HorizontalAlignment="Center" Width="828" Height="182" FontSize="75" Style="{StaticResource ButtonForwardNoTag}">
-                СОЗДАЙ СВОЮ МОДНУЮ&#10;ФУТБОЛКУ COCA-COLA
-            </Button>
-            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="40" Margin="-90,10,0,0" Style="{StaticResource EngLabel}">CREATE YOUR FASHION COCA-COLA T-SHIRT</TextBlock>
-        </Grid>
+        <Image Margin="54.8,66,0,0" Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" HorizontalAlignment="Left" Stretch="Fill"/>
+        <Button Margin="102,1648,0,0" Padding="0" Command="{Binding StartCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="828" Height="182" FontSize="72" Style="{StaticResource ButtonForwardNoTag}">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="{TemplateBinding Foreground}"
+                                TextWrapping="Wrap" 
+                                Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" LineHeight="71" LineStackingStrategy="BlockLineHeight"/>
+                        <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2"/>
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+            СОЗДАЙ СВОЮ МОДНУЮ&#10;ФУТБОЛКУ COCA-COLA
+        </Button>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="42" Margin="106,1806,0,0" Style="{StaticResource EngLabel}">CREATE YOUR FASHION COCA-COLA T-SHIRT</TextBlock>
 
     </Grid>
 </UserControl>

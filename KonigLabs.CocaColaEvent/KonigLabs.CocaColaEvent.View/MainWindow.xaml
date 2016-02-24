@@ -12,7 +12,7 @@
     
     <Label Content="{Binding Path=CurrentContent}">
         <Label.LayoutTransform>
-            <ScaleTransform ScaleX="0.4" ScaleY="0.4"/>
+            <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
         </Label.LayoutTransform>
     </Label>
 </Window>

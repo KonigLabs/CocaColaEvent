@@ -10,7 +10,7 @@
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="boolToVisible"/>
     </UserControl.Resources>
-    
+
     <Grid>
         <Grid.Resources>
             <Style x:Key="ItemTypeStyle" TargetType="ListBoxItem">
@@ -39,32 +39,19 @@
         <Grid.Background>
             <ImageBrush ImageSource="pack://Application:,,,/Resources/activity_bg.png"/>
         </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="450"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="690"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        <Image Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" Margin="55,70,0,0" HorizontalAlignment="Left" Stretch="Fill"/>
+        <!--ЛОГО -->
+        <Image Margin="54.8,66,0,0" Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" HorizontalAlignment="Left" Stretch="Fill"/>
         <!--Выбор майки-->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Image Source="pack://Application:,,,/Resources/men_head.png" Visibility="{Binding MenTshortExists,Converter={StaticResource boolToVisible}}"/>
-            <TextBlock Padding="40,0,40,0" VerticalAlignment="Center" Style="{StaticResource BaseTextBox}">ВЫБЕРИ ФУТБОЛКУ</TextBlock>
-            <Image Source="pack://Application:,,,/Resources/women_head.png" Visibility="{Binding WomenTshortExists,Converter={StaticResource boolToVisible}}"/>
-        </StackPanel>
-        <ListBox ItemContainerStyle="{StaticResource ItemTypeStyle}" ItemsSource="{Binding TshortTypes}" VerticalAlignment="Center" Grid.Row="2" SelectedItem="{Binding SelectedTshortType}" HorizontalAlignment="Center" Style="{StaticResource CustomListBox}">
+        <Image Source="pack://Application:,,,/Resources/men_head.png" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding MenTshortExists,Converter={StaticResource boolToVisible}}" Margin="114,481" Width="140" Height="140"/>
+        <TextBlock HorizontalAlignment="Left" Margin="298, 525,0,0" VerticalAlignment="Top" Style="{StaticResource BaseTextBox}">ВЫБЕРИ ФУТБОЛКУ</TextBlock>
+        <Image Source="pack://Application:,,,/Resources/women_head.png" Margin="822,482,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="140" Visibility="{Binding WomenTshortExists,Converter={StaticResource boolToVisible}}" Stretch="Fill"/>
+        <ListBox ItemContainerStyle="{StaticResource ItemTypeStyle}" Margin="28,655,0,0" ItemsSource="{Binding TshortTypes}" VerticalAlignment="Top" SelectedItem="{Binding SelectedTshortType}" HorizontalAlignment="Left" Style="{StaticResource CustomListBox}">
         </ListBox>
-        <TextBlock Grid.Row="3" Style="{StaticResource EngLabel}" VerticalAlignment="Top" HorizontalAlignment="Center">CHOOSE YOUR T-SHIRT</TextBlock>
+        <TextBlock Style="{StaticResource EngLabel}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="353,1369,0,0">CHOOSE YOUR T-SHIRT</TextBlock>
         <!--Навигация-->
-        <Grid Grid.Row="4" HorizontalAlignment="Center" Margin="0,0,0,60">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Content="НАЗАД" Tag="BACK" Style="{StaticResource ButtonBack}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding Preview}"/>
-            <Button Grid.Column="1" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" Command="{Binding Next}" Margin="120,0,0,0"/>
-        </Grid>
+        <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,1707,0,78" Command="{Binding Preview}"/>
+        <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="596,1707,0,0"/>
+
 
     </Grid>
 </UserControl>
