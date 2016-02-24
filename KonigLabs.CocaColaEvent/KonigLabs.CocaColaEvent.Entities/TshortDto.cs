@@ -14,6 +14,6 @@ namespace KonigLabs.CocaColaEvent.Entities
         public TshortSize Size { set; get; }
         public TshortType Type { set; get; }
         public TshortImage Design { set; get; }
-        public string Text { set; get; }
+        public TshortString Text { set; get; }
     }
 }

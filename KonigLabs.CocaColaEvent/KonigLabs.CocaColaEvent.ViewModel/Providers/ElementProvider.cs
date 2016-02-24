@@ -14,38 +14,22 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
 {
     public class ElementProvider
     {
-        private readonly string _filePath = "Prints.xml";
+        private readonly string _filePath = "prints.xml";
         private readonly string _womenPath = "womensize.xml";
         private readonly string _menPath = "mensize.xml";
+        private readonly string _resultPath = "resultpath.txt";
         /// <summary>
         /// Получить список текстов
         /// </summary>
         /// <returns></returns>
-        public List<string> GetTexts()
+        public List<TshortString> GetTexts()
         {
-            return new List<string> {
-                "ГДЕ ЭМОЦИИ,\nТАМ COCA-COLA",
-                "ГДЕ ТЫ,\nТАМ COCA-COLA",
-                "ГДЕ COCA-COLA,\nТАМ МУЗЫКА",
-                "ГДЕ COCA-COLA,\nТАМ МУЗЫКА2",
-                "ГДЕ COCA-COLA,\nТАМ МУЗЫКА3",
-            };
-        }
-        /// <summary>
-        /// Получить логотипы
-        /// </summary>
-        /// <returns></returns>
-        public List<TshortImage> GetLogos()
-        {
-            return new List<TshortImage> {
-                new TshortImage {
-                    Id=1,
-                    ImageSrc = "pack://Application:,,,/Resources/men_tshort.png"
-                },
-                new TshortImage {
-                    Id=1,
-                    ImageSrc = "pack://Application:,,,/Resources/logo_tshort_2.png"
-                },
+            return new List<TshortString> {
+                new TshortString { Id = 1, Text = "ГДЕ ЭМОЦИИ,\nТАМ COCA-COLA" },
+                new TshortString { Id = 2, Text = "ГДЕ ТЫ,\nТАМ COCA-COLA" },
+                new TshortString { Id = 3, Text = "ГДЕ COCA-COLA,\nТАМ МУЗЫКА" },
+                new TshortString { Id = 4, Text = "ГДЕ ДРУЗЬЯ,\nТАМ COCA-COLA" },
+                new TshortString { Id = 5, Text = "ГДЕ COCA-COLA,\nТАМ ЧУВСТВА" },
             };
         }
         /// <summary>
@@ -146,8 +130,10 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
         {
             return new List<TshortImage> {
                     new TshortImage {
+                        Id= 1,
                 ImageSrc = "pack://Application:,,,/Resources/design_1.png"},
                     new TshortImage {
+                        Id = 2,
                 ImageSrc = "pack://Application:,,,/Resources/design_2.png"}
             };
         }
@@ -225,6 +211,29 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                 using (var file = File.Create(_filePath))
                 {
                     serializer.Serialize(file, prints);
+                    file.Close();
+                }
+                //Сохранение результата для менеджера
+                var pathToSave = "results";
+                if (File.Exists(_resultPath))
+                {
+                    using (var fs = File.OpenText(_resultPath))
+                    {
+                        pathToSave = fs.ReadLine();
+                        fs.Close();
+                    }
+                }
+                if (!Directory.Exists(pathToSave))
+                {
+                    Directory.CreateDirectory(pathToSave);
+                }
+                string fileName = string.Format("{0}_{1}_{2}_d{3}_t{4}.txt", new object[] { tshort.Id, tshort.Type.Label, tshort.Size.Name, tshort.Design.Id, tshort.Text.Id });
+                string fileContent = string.Format("Заказ №{0}\nТип футболки:{1}\nРазмер:{2}\nФайл:{3}",
+                    new object[] { tshort.Id, tshort.Type.Label, tshort.Size.Name, "d" + tshort.Design.Id + "_t" + tshort.Text.Id + ".tif" });
+                using (var f = File.CreateText(Path.Combine(pathToSave, fileName)))
+                {
+                    f.Write(fileContent);
+                    f.Close();
                 }
                 return true;
             }

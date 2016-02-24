@@ -23,7 +23,7 @@
                         <ControlTemplate  TargetType="ListBoxItem">
                             <Grid Margin="15,0,15,0">
                                 <Rectangle Fill="White" Opacity="0.5" x:Name="IsCheck" Visibility="Hidden"/>
-                                <TextBlock Style="{StaticResource EngLabel}" FontSize="43" Text="{Binding}" TextWrapping="Wrap"  TextAlignment="Center"/>
+                                <TextBlock Style="{StaticResource EngLabel}" FontSize="43" Text="{Binding Text}" TextWrapping="Wrap"  TextAlignment="Center"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="true">
@@ -58,7 +58,7 @@
         <Grid Grid.Row="2">
             <Image Width="770"  Height="920" VerticalAlignment="Top" Source="{Binding SelectedType}"/>
             <Image Width="350" Height="512" Stretch="Fill" Margin="25,-110,0,0" Source="{Binding SelectedDesign, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Style="{StaticResource EngLabel}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="100,140,0,0" FontSize="25" Text="{Binding SelectedText, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Style="{StaticResource EngLabel}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="{Binding MarginText}" FontSize="25" Text="{Binding SelectedText.Text, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
         <!--Выбор надписи-->
         <Grid Grid.Row="3" Margin="30,0,30,0">

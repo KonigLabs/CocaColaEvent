@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
@@ -17,14 +18,20 @@ namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
 
         private TshortDto _tshort;
         
-        public List<string> Texts { set; get; }
+        public List<TshortString> Texts { set; get; }
 
         public ImageSource SelectedType
         {
             get { return _tshort.Type.Image; }
         }
-
-        public string SelectedText
+        public Thickness MarginText
+        {
+            get
+            {
+                return _tshort.Design.Id == 1 ? new Thickness(100, 140, 0, 0) : new Thickness(-100, -500, 0, 0);
+            }
+        }
+        public TshortString SelectedText
         {
             set
             {

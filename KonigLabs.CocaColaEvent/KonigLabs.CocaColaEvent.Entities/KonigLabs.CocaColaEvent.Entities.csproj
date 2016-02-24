@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Classes\TshortImage.cs" />
     <Compile Include="Classes\TshortSize.cs" />
+    <Compile Include="Classes\TshortString.cs" />
     <Compile Include="Classes\TshortType.cs" />
     <Compile Include="TshortDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

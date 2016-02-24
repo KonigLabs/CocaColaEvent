@@ -10,7 +10,7 @@
         Title="MainWindow" WindowState="Maximized">
     <Label Content="{Binding Path=CurrentContent}">
         <Label.LayoutTransform>
-            <ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+            <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
         </Label.LayoutTransform>
     </Label>
 </Window>

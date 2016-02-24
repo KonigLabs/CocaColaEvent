@@ -41,9 +41,15 @@ namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
         }
         public string SelectedText
         {
-            get { return _tshort.Text; }
+            get { return _tshort.Text.Text; }
         }
-
+        public Thickness MarginText
+        {
+            get
+            {
+                return _tshort.Design.Id == 1 ? new Thickness(100, 180, 0, 0) : new Thickness(-100, -460, 0, 0);
+            }
+        }
         public int NumberPrint
         {
             set
