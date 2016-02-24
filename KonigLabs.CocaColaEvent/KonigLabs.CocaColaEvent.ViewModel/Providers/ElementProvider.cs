@@ -228,7 +228,7 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                     Directory.CreateDirectory(pathToSave);
                 }
                 string fileName = string.Format("{0}_{1}_{2}_d{3}_t{4}.txt", new object[] { tshort.Id, tshort.Type.Label, tshort.Size.Name, tshort.Design.Id, tshort.Text.Id });
-                string fileContent = string.Format("Заказ №{0}\nТип футболки:{1}\nРазмер:{2}\nФайл:{3}",
+                string fileContent = string.Format("Заказ №{0}\n Тип футболки:{1}\n Размер:{2}\n Файл:{3}",
                     new object[] { tshort.Id, tshort.Type.Label, tshort.Size.Name, "d" + tshort.Design.Id + "_t" + tshort.Text.Id + ".tif" });
                 using (var f = File.CreateText(Path.Combine(pathToSave, fileName)))
                 {

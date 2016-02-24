@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
 {
@@ -15,7 +16,7 @@ namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
         private TshortDto _tshort;
 
         public List<TshortType> TshortTypes { set; get; }
-       
+
         public TshortType SelectedTshortType
         {
             set
@@ -25,7 +26,29 @@ namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
             }
             get { return _tshort.Type; }
         }
-        
+
+        private bool _womenTshortExists;
+        public bool WomenTshortExists
+        {
+            get { return _womenTshortExists; }
+            set
+            {
+                _womenTshortExists = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        private bool _menTshortExists;
+        public bool MenTshortExists
+        {
+            get { return _menTshortExists; }
+            set
+            {
+                _menTshortExists = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public TshortSize SelectedTshortSize
         {
             set
@@ -38,15 +61,22 @@ namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
                 return _tshort.Size;
             }
         }
-            
+
         public SelectTypeViewModel(IViewModelNavigator navigator, ElementProvider provider) : base(navigator)
         {
             _tshort = new TshortDto();
             TshortTypes = provider.GetTypes();
+            MenTshortExists = TshortTypes.Any(x => x.Label.ToLower() == "мужская");
+            WomenTshortExists = TshortTypes.Any(x => x.Label.ToLower() == "женская");
             SelectedTshortType = TshortTypes.FirstOrDefault();
         }
         protected override void OnNext()
         {
+            if (!TshortTypes.Any())
+            {
+                MessageBox.Show("В настоящее время футболки закончились. Извините!", "Coca Cola", MessageBoxButton.OK);
+                return;
+            }
             _navigator.NavigateForward<SelectSizeViewModel>(this, _tshort);
         }
     }

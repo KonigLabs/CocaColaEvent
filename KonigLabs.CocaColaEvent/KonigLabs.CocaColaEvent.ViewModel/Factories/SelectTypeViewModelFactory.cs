@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace KonigLabs.CocaColaEvent.ViewModel.Factories
 {
@@ -23,6 +24,12 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Factories
         }
         protected override SelectTypeViewModel GetViewModel(object param)
         {
+           var tshortTypes = _provider.GetTypes();
+            if (!tshortTypes.Any())
+            {
+                MessageBox.Show("В настоящее время футболки закончились. Извините!", "Coca Cola", MessageBoxButton.OK,MessageBoxImage.Information);
+                return null;
+            }
             return new SelectTypeViewModel(_navigator, _provider);
         }
     }

@@ -137,6 +137,7 @@
     </Compile>
     <Compile Include="Convertrs\ByteArrayToImageSourceConverter.cs" />
     <Compile Include="Convertrs\ColorToBrushConverter.cs" />
+    <Compile Include="Convertrs\ComputedHorizontalVisibility.cs" />
     <Compile Include="Convertrs\LiveViewImageConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

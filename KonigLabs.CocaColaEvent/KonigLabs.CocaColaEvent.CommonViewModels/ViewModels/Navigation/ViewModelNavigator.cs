@@ -54,6 +54,8 @@ namespace KonigLabs.CocaColaEvent.CommonViewModels.ViewModels.Navigation
         {
             BaseViewModel next = null;
             BaseViewModel to = _childrenViewModelsFactory.GetChild<TViewModelTo>(param);
+            if (to==null)
+                return;
             next = _storage.Next(from, to);
             RaiseContentChanged(next);
         }

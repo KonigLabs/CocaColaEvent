@@ -54,7 +54,8 @@
                     </Setter>
                 </Style>
             </Grid.Resources>
-            <ListBox Background="Transparent" ItemsSource="{Binding SelectedType.Size, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource ItemSizeStyle}" SelectedItem="{Binding SelectedSize}"  Style="{StaticResource CustomListBox}" Grid.Row="1">
+            <ListBox Background="Transparent"  ItemsSource="{Binding SelectedType.Size, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource ItemSizeStyle}" SelectedItem="{Binding SelectedSize}"  Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" >
+                <!--Style="{StaticResource CustomListBox}"-->
             </ListBox>
         </Grid>
         <!--Навигация-->

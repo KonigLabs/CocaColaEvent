@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KonigLabs.CocaColaEvent.View"
         mc:Ignorable="d" 
-        WindowStyle="None" SizeToContent="WidthAndHeight"
-        
-        Title="MainWindow" WindowState="Maximized">
+        WindowStyle="None"
+    SizeToContent="WidthAndHeight"
+    WindowState="Maximized"    
+        Title="Coca Cola" >
+    
     <Label Content="{Binding Path=CurrentContent}">
         <Label.LayoutTransform>
-            <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
+            <ScaleTransform ScaleX="0.4" ScaleY="0.4"/>
         </Label.LayoutTransform>
     </Label>
 </Window>
