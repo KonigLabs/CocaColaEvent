@@ -8,15 +8,22 @@
              Width="1080" Height="1920"
              
              >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="/Styles/AutoScrollListBoxDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.Resources>
             <Style x:Key="ItemTextStyle" TargetType="ListBoxItem">
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="ListBoxItem">
-                            <Grid>
+                        <ControlTemplate  TargetType="ListBoxItem">
+                            <Grid Margin="15,0,15,0">
                                 <Rectangle Fill="White" Opacity="0.5" x:Name="IsCheck" Visibility="Hidden"/>
-                                <TextBlock Style="{StaticResource EngLabel}" Text="{Binding}" TextWrapping="Wrap" Margin="10,0,10,0" TextAlignment="Center"/>
+                                <TextBlock Style="{StaticResource EngLabel}" FontSize="43" Text="{Binding}" TextWrapping="Wrap"  TextAlignment="Center"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="true">
@@ -54,30 +61,14 @@
             <TextBlock Style="{StaticResource EngLabel}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="100,140,0,0" FontSize="25" Text="{Binding SelectedText, UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
         <!--Выбор надписи-->
-        <Grid Grid.Row="3" Margin="60,0,60,0">
+        <Grid Grid.Row="3" Margin="30,0,30,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="886"/>
+                <ColumnDefinition />
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
-            <RepeatButton Grid.Column="0" 
-                          Style="{StaticResource ScrollBarLineButton}"
-                        Command="{x:Static ScrollBar.LineLeftCommand}" 
-                        CommandTarget="{Binding ElementName=scrollviewer}"
-                        ClickMode="Press" >
-                <Image Source="/KonigLabs.CocaColaEvent.View;component/Resources/list_left.png"/>
-            </RepeatButton>
-            <ScrollViewer x:Name="scrollviewer" Grid.Column="1" VerticalScrollBarVisibility="Hidden" CanContentScroll="True" HorizontalScrollBarVisibility="Hidden" Width="886">
-                <ListBox Background="Transparent"  ItemContainerStyle="{StaticResource ItemTextStyle}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Width="886" ItemsSource="{Binding Texts}" Style="{StaticResource CustomListBox}" HorizontalAlignment="Center" VerticalAlignment="Bottom" SelectedItem="{Binding SelectedText,UpdateSourceTrigger=PropertyChanged}"/>
-            </ScrollViewer>
-            <RepeatButton Grid.Column="2"
-                          Style="{StaticResource ScrollBarLineButton}"
-                        Command="{x:Static ScrollBar.LineRightCommand}"       
-                        CommandTarget="{Binding ElementName=scrollviewer}"
-                        ClickMode="Press">
 
-                <Image Source="/KonigLabs.CocaColaEvent.View;component/Resources/list_right.png"/>
-            </RepeatButton>
+            <ListBox Background="Transparent"  ItemContainerStyle="{StaticResource ItemTextStyle}"  Width="1020" ItemsSource="{Binding Texts}" Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" HorizontalAlignment="Center" VerticalAlignment="Bottom" SelectedItem="{Binding SelectedText,UpdateSourceTrigger=PropertyChanged}"/>
         </Grid>
         <!--Навигация-->
         <Grid Grid.Row="4" HorizontalAlignment="Center" Margin="0,0,0,60">

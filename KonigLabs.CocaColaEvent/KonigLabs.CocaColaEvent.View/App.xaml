@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="Styles/CustomButton.xaml"/>
                 <ResourceDictionary Source="Styles/CustomListBox.xaml"/>
                 <ResourceDictionary Source="Styles/CustomStyle.xaml"/>
+                <ResourceDictionary Source="Styles/AutoScrollListBoxDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
