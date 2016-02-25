@@ -4,15 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KonigLabs.CocaColaEvent.View"
+        xmlns:controls="clr-namespace:WPFControls.Layout.Controls;assembly=WPFControls.Layout"
         mc:Ignorable="d" 
         WindowStyle="None"
     SizeToContent="WidthAndHeight"
     WindowState="Maximized"    
+         AllowsTransparency="True"
+
         Title="Coca Cola" >
-    
-    <Label Content="{Binding Path=CurrentContent}">
-        <Label.LayoutTransform>
+
+    <controls:TransitioningContentControl BorderThickness="0" Transition="LeftReplaceTransition"   Content="{Binding Path=CurrentContent}">
+        <controls:TransitioningContentControl.LayoutTransform>
             <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
-        </Label.LayoutTransform>
-    </Label>
+        </controls:TransitioningContentControl.LayoutTransform>
+    </controls:TransitioningContentControl>
 </Window>

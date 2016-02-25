@@ -80,6 +80,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFControls.Layout">
+      <HintPath>..\..\..\..\..\Downloads\WPF-Controls-master\WPF-Controls-master\src\WPFControls.Layout\bin\Debug\WPFControls.Layout.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
