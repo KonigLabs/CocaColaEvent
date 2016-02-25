@@ -51,7 +51,10 @@
         <Image Width="350" Height="512" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="373,754,0,0"  Stretch="Fill" Source="{Binding SelectedDesign, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock Style="{StaticResource EngLabel}" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" TextAlignment="{Binding TextAligment}" Margin="{Binding MarginText}" FontSize="30" LineHeight="26" LineStackingStrategy="BlockLineHeight" Text="{Binding SelectedText.Text, UpdateSourceTrigger=PropertyChanged}"/>
         <!--Выбор надписи-->
-        <ListBox Margin="30,1563,0,0" Background="Transparent"  ItemContainerStyle="{StaticResource ItemTextStyle}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="1020"  ItemsSource="{Binding Texts}" Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" SelectedItem="{Binding SelectedText,UpdateSourceTrigger=PropertyChanged}"/>
+        <Grid>
+            <ListBox  x:Name="listbox"  Margin="30,1563,0,0"    Background="Transparent"  ItemContainerStyle="{StaticResource ItemTextStyle}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="1020"  ItemsSource="{Binding Texts}" Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" SelectedItem="{Binding SelectedText,UpdateSourceTrigger=PropertyChanged}">
+            </ListBox >
+        </Grid>
         <!--Навигация-->
         <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,1707,0,78" Command="{Binding Preview}"/>
         <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="596,1707,0,0"/>

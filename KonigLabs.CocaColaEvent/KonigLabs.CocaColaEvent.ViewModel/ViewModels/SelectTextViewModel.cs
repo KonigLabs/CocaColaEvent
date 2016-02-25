@@ -50,7 +50,7 @@ namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
                 _tshort.Text = value;                
                 RaisePropertyChanged();
                 //todo грязный хак для того что бы выбор хотябы оставался, надо думать что делать с тем что бы ScrollViewer не откатывался
-                Thread.Sleep(100);
+                //Thread.Sleep(100);
             }
             get { return _tshort.Text; }
         }
