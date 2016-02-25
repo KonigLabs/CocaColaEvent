@@ -8,14 +8,14 @@
         mc:Ignorable="d" 
         WindowStyle="None"
     SizeToContent="WidthAndHeight"
-    WindowState="Maximized"    
-         AllowsTransparency="True"
-
+    WindowState="Maximized"   
+        ResizeMode="NoResize"
+        
         Title="Coca Cola" >
 
     <controls:TransitioningContentControl BorderThickness="0" Transition="LeftReplaceTransition"   Content="{Binding Path=CurrentContent}">
-        <controls:TransitioningContentControl.LayoutTransform>
-            <ScaleTransform ScaleX="0.5" ScaleY="0.5"/>
-        </controls:TransitioningContentControl.LayoutTransform>
+        <!--<controls:TransitioningContentControl.LayoutTransform>
+            <ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
+        </controls:TransitioningContentControl.LayoutTransform>-->
     </controls:TransitioningContentControl>
 </Window>
