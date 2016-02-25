@@ -20,10 +20,10 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Image Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" Margin="55,70,0,0" HorizontalAlignment="Left" Stretch="Fill"/>
+        <Image Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="320" Height="309" Margin="55,67,0,0" HorizontalAlignment="Left" Stretch="Fill"/>
         <!--Выбор майки-->
         <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Padding="40,0,40,0" VerticalAlignment="Center" Style="{StaticResource BaseTextBox}">ВЫБЕРИ ДИЗАЙН</TextBlock>
+            <TextBlock Margin="0,-18,0,0" VerticalAlignment="Center" Style="{StaticResource BaseTextBox}">ВЫБЕРИ ДИЗАЙН</TextBlock>
             <TextBlock Grid.Row="3" Style="{StaticResource EngLabel}" VerticalAlignment="Top" HorizontalAlignment="Center">CHOOSE DESIGN</TextBlock>
         </StackPanel>
         <Grid Grid.Row="2">
@@ -49,9 +49,15 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button Content="НАЗАД" Tag="BACK" Style="{StaticResource ButtonBack}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding Preview}"/>
-            <Button Grid.Column="1" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" Command="{Binding Next}" Margin="120,0,0,0"/>
+            <Button Content="НАЗАД" Tag="BACK" Style="{StaticResource ButtonBack}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding Preview}" Margin="-109,0,2,0"/>
+            <Button Grid.Column="1" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" Command="{Binding Next}" Width="259" Margin="30,0,0,10" HorizontalContentAlignment="Right" VerticalContentAlignment="Top"/>
         </Grid>
-
+		<!--Навигация-->
+		<!--<Grid Grid.Row="3">
+			
+        <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,1707,0,78" Command="{Binding Preview}"/>
+        <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="596,1707,0,0"/>
+		</Grid>-->
+        
     </Grid>
 </UserControl>
