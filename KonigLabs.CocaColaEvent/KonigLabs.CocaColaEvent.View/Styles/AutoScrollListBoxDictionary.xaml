@@ -112,7 +112,7 @@
                                       Command="{x:Static ScrollBar.LineLeftCommand}"       
                                       CommandTarget="{Binding ElementName=scrollviewer}"
                                       ClickMode="Press" 
-                                      Visibility="{Binding Converter={StaticResource ComputedHorizontalVisibility} ,ElementName=Panel, Path=ActualWidth}">
+                                      Visibility="{Binding Converter={StaticResource ComputedHorizontalVisibility} ,ElementName=Panel, Path=ActualWidth,UpdateSourceTrigger=PropertyChanged}">
                                 <Image Width="60" Height="100"    Source="/KonigLabs.CocaColaEvent.View;component/Resources/list_left.png"/>
                             </RepeatButton >
                             <RepeatButton   x:Name="LineRightButton" Grid.Column="2"  
@@ -120,7 +120,7 @@
                                       Command="{x:Static ScrollBar.LineRightCommand}"       
                                       CommandTarget="{Binding ElementName=scrollviewer}"
                                       ClickMode="Press"
-                                      Visibility="{Binding Converter={StaticResource ComputedHorizontalVisibility} ,ElementName=Panel, Path=ActualWidth}"      >
+                                      Visibility="{Binding Converter={StaticResource ComputedHorizontalVisibility} ,ElementName=Panel, Path=ActualWidth, UpdateSourceTrigger=PropertyChanged}"      >
                                 <Image Width="60" Height="100"   Source="/KonigLabs.CocaColaEvent.View;component/Resources/list_right.png"/>
 
                             </RepeatButton>

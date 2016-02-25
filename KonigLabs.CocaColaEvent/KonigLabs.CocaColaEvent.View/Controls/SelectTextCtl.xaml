@@ -42,43 +42,19 @@
         <Grid.Background>
             <ImageBrush ImageSource="pack://Application:,,,/Resources/activity_bg.png"/>
         </Grid.Background>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="450"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        <Image Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" Margin="55,70,0,0" HorizontalAlignment="Left" Stretch="Fill"/>
+        <!--ЛОГО -->
+        <Image Margin="54.8,66,0,0" Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" HorizontalAlignment="Left" Stretch="Fill"/>
         <!--Выбор майки-->
-        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Padding="40,0,40,0" VerticalAlignment="Center" Style="{StaticResource BaseTextBox}">ВЫБЕРИ СВОЮ НАДПИСЬ</TextBlock>
-            <TextBlock Grid.Row="3" Style="{StaticResource EngLabel}" VerticalAlignment="Top" HorizontalAlignment="Center">CHOOSE PHRASE</TextBlock>
-        </StackPanel>
-        <Grid Grid.Row="2">
-            <Image Width="770"  Height="920" VerticalAlignment="Top" Source="{Binding SelectedType}"/>
-            <Image Width="350" Height="512" Stretch="Fill" Margin="25,-110,0,0" Source="{Binding SelectedDesign, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBlock Style="{StaticResource EngLabel}" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" Margin="{Binding MarginText}" FontSize="25" Text="{Binding SelectedText.Text, UpdateSourceTrigger=PropertyChanged}"/>
-        </Grid>
+        <TextBlock Style="{StaticResource BaseTextBox}" Margin="232,430,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">ВЫБЕРИ СВОЮ НАДПИСЬ</TextBlock>
+        <TextBlock Style="{StaticResource EngLabel}" Margin="405,506,0,0">CHOOSE PHRASE</TextBlock>
+        <Image Width="771" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="{Binding MarginTshort}" Height="920" Source="{Binding SelectedType}"/>
+        <Image Width="350" Height="512" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="373,754,0,0"  Stretch="Fill" Source="{Binding SelectedDesign, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Style="{StaticResource EngLabel}" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" TextAlignment="{Binding TextAligment}" Margin="{Binding MarginText}" FontSize="30" LineHeight="26" LineStackingStrategy="BlockLineHeight" Text="{Binding SelectedText.Text, UpdateSourceTrigger=PropertyChanged}"/>
         <!--Выбор надписи-->
-        <Grid Grid.Row="3" Margin="30,0,30,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition />
-                <ColumnDefinition Width="auto"/>
-            </Grid.ColumnDefinitions>
-
-            <ListBox Background="Transparent"  ItemContainerStyle="{StaticResource ItemTextStyle}"  Width="1020" ItemsSource="{Binding Texts}" Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" HorizontalAlignment="Center" VerticalAlignment="Bottom" SelectedItem="{Binding SelectedText,UpdateSourceTrigger=PropertyChanged}"/>
-        </Grid>
+        <ListBox Margin="30,1563,0,0" Background="Transparent"  ItemContainerStyle="{StaticResource ItemTextStyle}" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="1020"  ItemsSource="{Binding Texts}" Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" SelectedItem="{Binding SelectedText,UpdateSourceTrigger=PropertyChanged}"/>
         <!--Навигация-->
-        <Grid Grid.Row="4" HorizontalAlignment="Center" Margin="0,0,0,60">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Content="НАЗАД" Tag="BACK" Style="{StaticResource ButtonBack}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Command="{Binding Preview}"/>
-            <Button Grid.Column="1" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" Command="{Binding Next}" Margin="120,0,0,0"/>
-        </Grid>
+        <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,1707,0,78" Command="{Binding Preview}"/>
+        <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="596,1707,0,0"/>
 
     </Grid>
 </UserControl>
