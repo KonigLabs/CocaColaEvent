@@ -15,8 +15,8 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
     public class ElementProvider
     {
         private readonly string _filePath = "prints.xml";
-        private readonly string _womenPath = "womensize.xml";
-        private readonly string _menPath = "mensize.xml";
+        private string _womenPath = "womensize.xml";
+        private string _menPath = "mensize.xml";
         private readonly string _resultPath = "resultpath.txt";
         /// <summary>
         /// Получить список текстов
@@ -51,10 +51,22 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                 }
             }
             //мужские размеры
-            menSizes = GetSizes(string.IsNullOrEmpty(folderSize) ? _menPath : Path.Combine(folderSize, _menPath), false);
-            //женские размеры
+            if (string.IsNullOrEmpty(folderSize))
+            {
+                menSizes = GetSizes(_menPath, false);
+                womenSizes = GetSizes(_womenPath, true);
+            }
+            else
+            {
+                _menPath = Path.Combine(folderSize, _menPath);
+                _womenPath = Path.Combine(folderSize, _womenPath);
+                menSizes = GetSizes(_menPath, false);
+                womenSizes = GetSizes(_womenPath, true);
+            }
+            //menSizes = GetSizes(string.IsNullOrEmpty(folderSize) ? _menPath : Path.Combine(folderSize, _menPath), false);
+            ////женские размеры
 
-            womenSizes = GetSizes(string.IsNullOrEmpty(folderSize) ? _womenPath : Path.Combine(folderSize, _womenPath), true);
+            //womenSizes = GetSizes(string.IsNullOrEmpty(folderSize) ? _womenPath : Path.Combine(folderSize, _womenPath), true);
             var types = new List<TshortType>();
             if (menSizes.Count > 0)
             {
@@ -86,7 +98,7 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                 using (var s = File.OpenRead(path))
                 {
                     return (List<TshortSize>)serializer.Deserialize(s);
-                    
+
                 }
             }
             else
@@ -187,6 +199,23 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
         {
             try
             {
+
+                string folderSize = "";
+                  if (File.Exists(_resultPath))
+                {
+                    using (var f = File.OpenText(_resultPath))
+                    {
+                        var r = f.ReadLine();
+                        folderSize = f.ReadLine();
+                    }
+                }
+                //мужские размеры
+                if (!string.IsNullOrEmpty(folderSize))
+                {
+                    _menPath = Path.Combine(folderSize, _menPath);
+                    _womenPath = Path.Combine(folderSize, _womenPath);
+                }
+              
                 List<TshortDto> prints = new List<TshortDto>();
                 XmlSerializer serializer;
                 //декримент мужских футблок
