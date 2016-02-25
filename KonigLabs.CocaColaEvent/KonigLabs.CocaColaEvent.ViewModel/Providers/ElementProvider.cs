@@ -43,9 +43,9 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
             var womenSizes = new List<TshortSize>();
 
             //мужские размеры
-            menSizes =  GetSizes(_menPath);
+            menSizes =  GetSizes(_menPath, false);
             //женские размеры
-            womenSizes= GetSizes(_womenPath);
+            womenSizes = GetSizes(_womenPath, true);
             var types = new List<TshortType>();
             if (menSizes.Count > 0)
             {
@@ -69,7 +69,7 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
             }
             return types;
         }
-        private List<TshortSize> GetSizes(string path)
+        private List<TshortSize> GetSizes(string path, bool isWomen)
         {
             var serializer = new XmlSerializer(typeof(List<TshortSize>));
             if (File.Exists(path))
@@ -82,17 +82,11 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
             }
             else
             {
-                var defaultSizes = new List<TshortSize>()
+                List<TshortSize> defaultSizes;
+                if (isWomen)
+                {
+                    defaultSizes = new List<TshortSize>()
                                     {
-                                            //new TshortSize {
-                                            //                    Count= 1,
-                                            //                    Name="XXS"
-                                            //                },
-                                            //new TshortSize {
-                                            //                    Count= 1,
-                                            //                    Name="XS"
-                                            //                },
-
                                             new TshortSize {
                                                                 Count= 1,
                                                                 Name="S"
@@ -109,11 +103,35 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                                                                 Count= 1,
                                                                 Name="XL"
                                                             },
-                                            //new TshortSize {
-                                            //                    Count= 1,
-                                            //                    Name="XXL"
-                                            //                },
                                     };
+                }
+                else
+                {
+                    defaultSizes = new List<TshortSize>()
+                                    {
+                                            new TshortSize {
+                                                                Count= 1,
+                                                                Name="M"
+                                                            },
+                                            new TshortSize {
+                                                                Count= 1,
+                                                                Name="L"
+                                                            },
+                                            new TshortSize {
+                                                                Count= 1,
+                                                                Name="XL"
+                                                            },
+                                            new TshortSize {
+                                                                Count= 1,
+                                                                Name="XXL"
+                                                            },
+                                            new TshortSize {
+                                                                Count= 1,
+                                                                Name="3XL"
+                                                            }
+                    };
+                }
+
                 using (var s = File.Create(path))
                 {
                     serializer.Serialize(s, defaultSizes);

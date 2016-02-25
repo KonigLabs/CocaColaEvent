@@ -3,19 +3,62 @@
     <Style x:Key="ButtonBack" TargetType="{x:Type Button}" >
         <Setter Property="Foreground" Value="#FFF" />
         <Setter Property="FontSize" Value="62"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontFamily" Value="/KonigLabs.CocaColaEvent.View;component/Resources/#PF Din Text Pro"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate>
-                    <Grid >
-                        <TextBlock Margin="110,92,0,0" Text="{TemplateBinding Tag}" FontSize="42" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" />
-                        <TextBlock Margin="109,20,0,0"
-                                FontFamily="{TemplateBinding FontFamily}"
-                                FontSize="{TemplateBinding FontSize}"
-                                Foreground="{TemplateBinding Foreground}"
-                                TextWrapping="Wrap" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
-                        <Image Source="pack://Application:,,,/Resources/navigate_back.png" Width="63" Height="115" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                <ControlTemplate TargetType="{x:Type Button}">
+                   <Grid>
+                        <Border x:Name="PART_border"  Background="Transparent"/>
+                        <Grid x:Name="mainContent">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <TextBlock Margin="110,92,0,0" Text="{TemplateBinding Tag}" FontSize="42" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}" />
+                            <TextBlock Margin="109,20,0,0"
+                                    FontFamily="{TemplateBinding FontFamily}"
+                                    FontSize="{TemplateBinding FontSize}"
+                                    Foreground="{TemplateBinding Foreground}"
+                                    TextWrapping="Wrap" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Image Source="pack://Application:,,,/Resources/navigate_back.png" Width="63" Height="115" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                        </Grid>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_border" Property="Background" Value="{Binding Background,RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="PART_border" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_border" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="PART_border" Property="Opacity" Value="1" />
+                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="2.5" BlurRadius="10" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Name="mouseEnterBeginStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="mainContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                                         By="0.03" Duration="0:0:0.08" />
+                                        <DoubleAnimation Storyboard.TargetName="mainContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" 
+                                                         By="0.03" Duration="0:0:0.08" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
+                            <EventTrigger.Actions>
+                                <StopStoryboard BeginStoryboardName="mouseEnterBeginStoryboard" />
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -23,18 +66,61 @@
     <Style x:Key="ButtonForward" TargetType="{x:Type Button}" >
         <Setter Property="Foreground" Value="#FFF" />
         <Setter Property="FontSize" Value="62"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontFamily" Value="/KonigLabs.CocaColaEvent.View;component/Resources/#PF Din Text Pro"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate>
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Grid >
-                        <TextBlock Margin="79,92,0,0" Text="{TemplateBinding Tag}" FontSize="42" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}"/>
-                        <TextBlock Margin="0,20,0,0"
+                        <Border x:Name="PART_border"  Background="Transparent"/>
+                        <Grid x:Name="mainContent">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <TextBlock Margin="79,92,0,0" Text="{TemplateBinding Tag}" FontSize="42" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}"/>
+                            <TextBlock Margin="0,20,0,0"
                                 FontFamily="{TemplateBinding FontFamily}"
                                 FontSize="{TemplateBinding FontSize}"
                                 Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
-                        <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Top" HorizontalAlignment="Right" />
+                            <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Top" HorizontalAlignment="Right" />
+                        </Grid>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_border" Property="Background" Value="{Binding Background,RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="PART_border" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_border" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="PART_border" Property="Opacity" Value="1" />
+                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="2.5" BlurRadius="10" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Name="mouseEnterBeginStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="mainContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                                         By="0.03" Duration="0:0:0.08" />
+                                        <DoubleAnimation Storyboard.TargetName="mainContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" 
+                                                         By="0.03" Duration="0:0:0.08" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
+                            <EventTrigger.Actions>
+                                <StopStoryboard BeginStoryboardName="mouseEnterBeginStoryboard" />
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -42,18 +128,62 @@
     <Style x:Key="ButtonFinish" TargetType="{x:Type Button}" >
         <Setter Property="Foreground" Value="#FFF" />
         <Setter Property="FontSize" Value="62"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontFamily" Value="/KonigLabs.CocaColaEvent.View;component/Resources/#PF Din Text Pro"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate>
+                <ControlTemplate TargetType="{x:Type Button}">
                     <Grid >
-                        <TextBlock Margin="0,92,98,0" HorizontalAlignment="Right" Text="{TemplateBinding Tag}" FontSize="42" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}"/>
-                        <TextBlock Margin="0,20,0,0"
+                        <Border x:Name="PART_border"  Background="Transparent"/>
+
+                        <Grid x:Name="mainContent">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <TextBlock Margin="0,92,98,0" HorizontalAlignment="Right" Text="{TemplateBinding Tag}" FontSize="42" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}"/>
+                            <TextBlock Margin="0,20,0,0"
                                 FontFamily="{TemplateBinding FontFamily}"
                                 FontSize="{TemplateBinding FontSize}"
                                 Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
-                        <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Top" HorizontalAlignment="Right" />
+                            <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Top" HorizontalAlignment="Right" />
+                        </Grid>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_border" Property="Background" Value="{Binding Background,RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="PART_border" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_border" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="PART_border" Property="Opacity" Value="1" />
+                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="2.5" BlurRadius="10" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Name="mouseEnterBeginStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="mainContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                                         By="0.03" Duration="0:0:0.08" />
+                                        <DoubleAnimation Storyboard.TargetName="mainContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" 
+                                                         By="0.03" Duration="0:0:0.08" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
+                            <EventTrigger.Actions>
+                                <StopStoryboard BeginStoryboardName="mouseEnterBeginStoryboard" />
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -63,6 +193,8 @@
     <Style x:Key="ButtonForwardNoTag" TargetType="{x:Type Button}" >
         <Setter Property="Foreground" Value="#FFF" />
         <Setter Property="FontSize" Value="115"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="FontFamily" Value="/KonigLabs.CocaColaEvent.View;component/Resources/#PF Din Text Pro"/>
     </Style>
 </ResourceDictionary>

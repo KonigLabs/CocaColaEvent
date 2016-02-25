@@ -43,11 +43,12 @@
         <Image Margin="54.8,66,0,0" Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" HorizontalAlignment="Left" Stretch="Fill"/>
         <!--Выбор майки-->
         <Image Source="pack://Application:,,,/Resources/men_head.png" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="{Binding MenTshortExists,Converter={StaticResource boolToVisible}}" Margin="114,481" Width="140" Height="140"/>
-        <TextBlock HorizontalAlignment="Left" Margin="298, 525,0,0" VerticalAlignment="Top" Style="{StaticResource BaseTextBox}">ВЫБЕРИ ФУТБОЛКУ</TextBlock>
+        
+        <TextBlock HorizontalAlignment="Left" Margin="298, 430,0,0" VerticalAlignment="Top" Style="{StaticResource BaseTextBox}">ВЫБЕРИ ФУТБОЛКУ</TextBlock>
+        <TextBlock Style="{StaticResource EngLabel}" Margin="353,506,0,0">CHOOSE YOUR T-SHIRT</TextBlock>
         <Image Source="pack://Application:,,,/Resources/women_head.png" Margin="822,482,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="140" Height="140" Visibility="{Binding WomenTshortExists,Converter={StaticResource boolToVisible}}" Stretch="Fill"/>
         <ListBox ItemContainerStyle="{StaticResource ItemTypeStyle}" Margin="28,655,0,0" ItemsSource="{Binding TshortTypes}" VerticalAlignment="Top" SelectedItem="{Binding SelectedTshortType}" HorizontalAlignment="Left" Style="{StaticResource CustomListBox}">
         </ListBox>
-        <TextBlock Style="{StaticResource EngLabel}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="353,1369,0,0">CHOOSE YOUR T-SHIRT</TextBlock>
         <!--Навигация-->
         <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,1707,0,78" Command="{Binding Preview}"/>
         <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="594,1707,0,0"/>

@@ -46,7 +46,7 @@
         <!--Выбор майки-->
         <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Left">
             <TextBlock Padding="110,1,0,0" FontSize="65" Style="{StaticResource BaseTextBox}">ПРИХОДИ ЗА ГОТОВОЙ ФУТБОЛКОЙ</TextBlock>
-            <TextBlock Padding="393,0,0,0" Margin="0,-2,0,0" Style="{StaticResource EngLabel}">GET YOUR T-SHORT</TextBlock>
+            <TextBlock Padding="393,0,0,0" Margin="0,-2,0,0" Style="{StaticResource EngLabel}">GET YOUR T-SHIRT</TextBlock>
         </StackPanel>
         <Grid Grid.Row="2" Margin="0,28,0,9">
             <Image VerticalAlignment="Top" Source="{Binding SelectedType}"/>

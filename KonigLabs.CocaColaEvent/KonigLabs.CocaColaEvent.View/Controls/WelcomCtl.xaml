@@ -17,20 +17,61 @@
         <Image Margin="54.8,66,0,0" Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="321" Height="311" HorizontalAlignment="Left" Stretch="Fill"/>
         <Button Margin="102,1649,0,0" Padding="0" Command="{Binding StartCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="828" Height="182" FontSize="74.2" Style="{StaticResource ButtonForwardNoTag}">
             <Button.Template>
-                <ControlTemplate>
-                    <Grid >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Border x:Name="PART_border"  Background="Transparent"/>
+                        <Grid x:Name="mainContent">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock
                                 FontFamily="{TemplateBinding FontFamily}"
                                 FontSize="{TemplateBinding FontSize}"
                                 Foreground="{TemplateBinding Foreground}"
                                 TextWrapping="Wrap" 
                                 Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" LineHeight="73" LineStackingStrategy="BlockLineHeight"/>
-                        <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2" Margin="0,-12,0,0"/>
+                            <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.RowSpan="2" Margin="0,-12,0,0"/>
+                        </Grid>
                     </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_border" Property="Background" Value="{Binding Background,RelativeSource={RelativeSource TemplatedParent}}" />
+                            <Setter TargetName="PART_border" Property="Opacity" Value="0.7" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_border" Property="Background" Value="Transparent"/>
+                            <Setter TargetName="PART_border" Property="Opacity" Value="1" />
+                            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <Setter Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="2.5" BlurRadius="10" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseDown">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Name="mouseEnterBeginStoryboard">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="mainContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)"
+                                                         By="0.03" Duration="0:0:0.08" />
+                                        <DoubleAnimation Storyboard.TargetName="mainContent" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" 
+                                                         By="0.03" Duration="0:0:0.08" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Mouse.PreviewMouseUp">
+                            <EventTrigger.Actions>
+                                <StopStoryboard BeginStoryboardName="mouseEnterBeginStoryboard" />
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
             СОЗДАЙ СВОЮ МОДНУЮ&#10;ФУТБОЛКУ COCA-COLA!

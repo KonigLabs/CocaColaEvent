@@ -13,9 +13,9 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="ListBoxItem">
-                            <Grid Height="150" Width="170">
+                            <Grid Height="160" Width="180">
                                 <Grid Margin="10,0,10,0">
-                                    <Rectangle Fill="White" Opacity="0.5" x:Name="IsCheck" Visibility="Hidden"/>
+                                    <Border Width="160" Height="160"  CornerRadius="160" Background="White" Opacity="1" x:Name="IsCheck" Visibility="Hidden"/>
                                     <Border Width="150" Height="150" CornerRadius="150" Background="#DE0B1C" >
                                         <TextBlock Text="{Binding Name}" FontSize="92" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource BaseTextBox}"/>
                                     </Border>
