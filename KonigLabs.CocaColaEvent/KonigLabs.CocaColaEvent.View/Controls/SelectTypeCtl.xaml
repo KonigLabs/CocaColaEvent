@@ -50,7 +50,7 @@
         <TextBlock Style="{StaticResource EngLabel}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="353,1369,0,0">CHOOSE YOUR T-SHIRT</TextBlock>
         <!--Навигация-->
         <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,1707,0,78" Command="{Binding Preview}"/>
-        <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="596,1707,0,0"/>
+        <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="594,1707,0,0"/>
 
 
     </Grid>
