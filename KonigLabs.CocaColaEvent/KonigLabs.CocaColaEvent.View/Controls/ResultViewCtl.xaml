@@ -70,7 +70,7 @@
         <!--Навигация-->
         <Grid Grid.Row="4" HorizontalAlignment="Stretch" Margin="0,45,0,0">
             <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="203,0,0,0" Command="{Binding Preview}"/>
-            <Button Width="277" Height="132" Tag="FINISH"  Content="ГОТОВО" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Completed}" Margin="580,0,0,0"/>
+            <Button Width="277" Height="132" Tag="FINISH" Content="ГОТОВО" Style="{StaticResource ButtonFinish}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Completed}" Margin="580,0,0,0"/>
         </Grid>
     </Grid>
 </UserControl>

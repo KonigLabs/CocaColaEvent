@@ -39,6 +39,25 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="ButtonFinish" TargetType="{x:Type Button}" >
+        <Setter Property="Foreground" Value="#FFF" />
+        <Setter Property="FontSize" Value="62"/>
+        <Setter Property="FontFamily" Value="/KonigLabs.CocaColaEvent.View;component/Resources/#PF Din Text Pro"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid >
+                        <TextBlock Margin="0,92,98,0" HorizontalAlignment="Right" Text="{TemplateBinding Tag}" FontSize="42" FontFamily="{TemplateBinding FontFamily}" Foreground="{TemplateBinding Foreground}"/>
+                        <TextBlock Margin="0,20,0,0"
+                                FontFamily="{TemplateBinding FontFamily}"
+                                FontSize="{TemplateBinding FontSize}"
+                                Foreground="{TemplateBinding Foreground}" TextWrapping="Wrap" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}"/>
+                        <Image Source="pack://Application:,,,/Resources/navigate_forward.png" Grid.Column="1" Width="63" Height="115" VerticalAlignment="Top" HorizontalAlignment="Right" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
     
     <Style x:Key="ButtonForwardNoTag" TargetType="{x:Type Button}" >
