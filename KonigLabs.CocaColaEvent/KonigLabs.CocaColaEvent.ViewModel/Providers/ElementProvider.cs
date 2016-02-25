@@ -130,11 +130,11 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
         {
             return new List<TshortImage> {
                     new TshortImage {
-                        Id= 1,
-                ImageSrc = "pack://Application:,,,/Resources/design_1.png"},
-                    new TshortImage {
                         Id = 2,
-                ImageSrc = "pack://Application:,,,/Resources/design_2.png"}
+                ImageSrc = "pack://Application:,,,/Resources/design_2.png"},
+                    new TshortImage {
+                        Id= 1,
+                ImageSrc = "pack://Application:,,,/Resources/design_1.png"}
             };
         }
         /// <summary>

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
@@ -26,6 +27,13 @@ namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
         public TshortType SelectedType
         {
             get { return _tshort.Type; }
+        }
+        public Thickness MarginTshort
+        {
+            get
+            {
+                return _tshort.Type.Id == 1 ? new Thickness(148, 587, 0, 0) : new Thickness(185, 587, 0, 0);
+            }
         }
         public SelectSizeViewModel(IViewModelNavigator navigator, TshortDto tshort) : base(navigator)
         {

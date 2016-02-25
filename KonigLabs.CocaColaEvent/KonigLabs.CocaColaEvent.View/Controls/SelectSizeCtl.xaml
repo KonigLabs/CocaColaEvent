@@ -42,10 +42,9 @@
         <!--preview майки-->
         <TextBlock Style="{StaticResource BaseTextBox}" Margin="376,430,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">ВАШ РАЗМЕР</TextBlock>
         <TextBlock Style="{StaticResource EngLabel}" Margin="382,506,0,0">CHOOSE YOUR SIZE</TextBlock>
-        <Image Width="771" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="148,587,0,0" Height="920" Source="{Binding SelectedType.Image}"/>
+        <Image Width="771" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="{Binding MarginTshort}" Height="920" Source="{Binding SelectedType.Image}"/>
         <!--Выбор размера-->
-        <ListBox Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,1520,0,0" ItemsSource="{Binding SelectedType.Size, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource ItemSizeStyle}" SelectedItem="{Binding SelectedSize}"  Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" >
-        </ListBox>
+        <ListBox Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,1520,0,0" ItemsSource="{Binding SelectedType.Size, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource ItemSizeStyle}" SelectedItem="{Binding SelectedSize}"  Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" />
         <!--Навигация-->
         <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,1707,0,78" Command="{Binding Preview}"/>
         <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="596,1707,0,0"/>

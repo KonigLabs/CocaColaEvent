@@ -7,6 +7,17 @@
              Width="1080" Height="1920"
              >
     <Grid>
+        <Grid.Resources>
+            <Style x:Key="ItemDesignStyle" TargetType="ListBoxItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ListBoxItem">
+                            <Image Source="{Binding Image}" Margin="108,0,108,0"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Grid.Resources>
         <Grid.RenderTransform>
             <ScaleTransform ScaleX="1" ScaleY="1">
             </ScaleTransform>
@@ -14,35 +25,17 @@
         <Grid.Background>
             <ImageBrush ImageSource="pack://Application:,,,/Resources/activity_bg.png"/>
         </Grid.Background>
-       <Image Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="320" Height="309" Margin="55,67,0,0" HorizontalAlignment="Left" Stretch="Fill"/>
+        <Image Margin="54.8,66,0,0" Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" HorizontalAlignment="Left" Stretch="Fill"/>
         <!--Выбор майки-->
-        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Margin="0,-18,0,0" VerticalAlignment="Center" Style="{StaticResource BaseTextBox}">ВЫБЕРИ ДИЗАЙН</TextBlock>
-            <TextBlock Grid.Row="3" Style="{StaticResource EngLabel}" VerticalAlignment="Top" HorizontalAlignment="Center">CHOOSE DESIGN</TextBlock>
-        </StackPanel>
-        <Grid Grid.Row="2">
-            <Grid.Resources>
-                <Style x:Key="ItemDesignStyle" TargetType="ListBoxItem">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="ListBoxItem">
-                                <Image Source="{Binding Image}" Margin="115,0,115,0"/>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Grid.Resources>
-            <Image Width="770"  Height="920" VerticalAlignment="Top" Source="{Binding SelectedType}"/>
-            <Image Width="350" Height="512" Stretch="Fill" Margin="25,-220,0,0" Source="{Binding SelectedDesign.Image, UpdateSourceTrigger=PropertyChanged}"/>
-            <ListBox Background="Transparent" SelectedItem="{Binding SelectedDesign}" Style="{StaticResource CustomListBox}" HorizontalAlignment="Center" ItemsSource="{Binding Designs}" ItemContainerStyle="{StaticResource ItemDesignStyle}" VerticalAlignment="Bottom"/>
+        <TextBlock Style="{StaticResource BaseTextBox}" Margin="323,430,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">ВЫБЕРИ ДИЗАЙН</TextBlock>
+        <TextBlock Style="{StaticResource EngLabel}" Margin="404,506,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">CHOOSE DESIGN</TextBlock>
 
-        </Grid>
-        
-		<!--Навигация-->
-			
+        <Image Width="771" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="{Binding MarginTshort}" Height="920" Source="{Binding SelectedType}"/>
+        <Image Width="350" Height="512" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="373,754,0,0"  Stretch="Fill" Source="{Binding SelectedDesign.Image, UpdateSourceTrigger=PropertyChanged}"/>
+        <ListBox Background="Transparent" Margin="73,1302,0,0" SelectedItem="{Binding SelectedDesign}" Style="{StaticResource CustomListBox}" HorizontalAlignment="Left" ItemsSource="{Binding Designs}" ItemContainerStyle="{StaticResource ItemDesignStyle}" VerticalAlignment="Top"/>
+        <!--Навигация-->
         <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,1707,0,78" Command="{Binding Preview}"/>
         <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="596,1707,0,0"/>
-		
-        
+
     </Grid>
 </UserControl>
