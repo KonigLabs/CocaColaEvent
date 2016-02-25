@@ -28,7 +28,19 @@ namespace KonigLabs.CocaColaEvent.ViewModel.ViewModels
         {
             get
             {
-                return _tshort.Design.Id == 1 ? new Thickness(100, 140, 0, 0) : new Thickness(-100, -500, 0, 0);
+                return _tshort.Design.Id == 1 ? new Thickness(492, 1113, 0, 0) : new Thickness(408, 797, 0, 0);
+            }
+        }
+        public Thickness MarginTshort {
+            get {
+                return _tshort.Type.Id == 1 ? new Thickness(148, 587, 0, 0) : new Thickness(185, 587, 0, 0);
+            }
+        }
+        public TextAlignment TextAligment
+        {
+            get
+            {
+                return _tshort.Design.Id == 1 ? TextAlignment.Right : TextAlignment.Left;
             }
         }
         public TshortString SelectedText
