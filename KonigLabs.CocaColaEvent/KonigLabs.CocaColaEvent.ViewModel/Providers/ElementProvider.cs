@@ -14,7 +14,7 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
 {
     public class ElementProvider
     {
-        private readonly string _filePath = "prints.xml";
+        private string _filePath = "prints.xml";
         private string _womenPath = "womensize.xml";
         private string _menPath = "mensize.xml";
         private readonly string _resultPath = "resultpath.txt";
@@ -182,9 +182,18 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
         /// <returns></returns>
         public int GetNextNumberPrint()
         {
-            if (!File.Exists("Prints.xml"))
+            string folderPrint = "";
+            if (File.Exists(_resultPath))
+            {
+                using (var f = File.OpenText(_resultPath))
+                {
+                    var r = f.ReadLine();
+                    folderPrint = f.ReadLine();
+                }
+            }
+            if (!File.Exists(Path.Combine(folderPrint, _filePath)))
                 return 1;
-            using (var ms = File.OpenRead("Prints.xml"))
+            using (var ms = File.OpenRead(Path.Combine(folderPrint, _filePath)))
             {
                 var list = (List<TshortDto>)new XmlSerializer(typeof(List<TshortDto>)).Deserialize(ms);
                 return list.Select(x => x.Id).Max() + 1;
@@ -212,6 +221,7 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                 //мужские размеры
                 if (!string.IsNullOrEmpty(folderSize))
                 {
+                    _filePath = Path.Combine(folderSize, _filePath);
                     _menPath = Path.Combine(folderSize, _menPath);
                     _womenPath = Path.Combine(folderSize, _womenPath);
                 }
@@ -256,7 +266,8 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                     }
                 }
                 serializer = new XmlSerializer(typeof(List<TshortDto>));
-                if (File.Exists(_filePath))
+                
+                if (File.Exists(Path.Combine(_filePath)))
                 {
                     using (var ms = File.OpenRead(_filePath))
                     {
