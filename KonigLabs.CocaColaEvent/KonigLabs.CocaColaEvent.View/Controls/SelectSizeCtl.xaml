@@ -16,8 +16,8 @@
                             <Grid Height="150" Width="170">
                                 <Grid Margin="10,0,10,0">
                                     <Rectangle Fill="White" Opacity="0.5" x:Name="IsCheck" Visibility="Hidden"/>
-                                    <Border Width="150" Height="150" CornerRadius="150" Background="Red">
-                                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Style="{StaticResource BaseTextBox}"/>
+                                    <Border Width="150" Height="150" CornerRadius="150" Background="#DE0B1C" >
+                                        <TextBlock Text="{Binding Name}" FontSize="92" HorizontalAlignment="Center" VerticalAlignment="Center"  Style="{StaticResource BaseTextBox}"/>
                                     </Border>
                                 </Grid>
                             </Grid>
@@ -40,11 +40,11 @@
         </Grid.Background>
         <Image Margin="54.8,66,0,0" Source="pack://Application:,,,/Resources/logo.png" VerticalAlignment="Top" Width="325" Height="312" HorizontalAlignment="Left" Stretch="Fill"/>
         <!--preview майки-->
-        <TextBlock Style="{StaticResource BaseTextBox}" Margin="376,430,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">ВАШ РАЗМЕР</TextBlock>
-        <TextBlock Style="{StaticResource EngLabel}" Margin="382,506,0,0">CHOOSE YOUR SIZE</TextBlock>
+        <TextBlock Style="{StaticResource BaseTextBox}" Margin="376,433,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">ВАШ РАЗМЕР</TextBlock>
+        <TextBlock Style="{StaticResource EngLabel}" Margin="382,509,0,0">CHOOSE YOUR SIZE</TextBlock>
         <Image Width="771" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="{Binding MarginTshort}" Height="920" Source="{Binding SelectedType.Image}"/>
         <!--Выбор размера-->
-        <ListBox Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,1520,0,0" ItemsSource="{Binding SelectedType.Size, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource ItemSizeStyle}" SelectedItem="{Binding SelectedSize}"  Style="{StaticResource ListBoxWithAutoScroll_Horizontal}" />
+        <ListBox Background="Transparent" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,1520,0,0" ItemsSource="{Binding SelectedType.Size, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource ItemSizeStyle}" SelectedItem="{Binding SelectedSize}"  Style="{StaticResource CustomListBox}" />
         <!--Навигация-->
         <Button Content="НАЗАД" Width="277" Height="132" Tag="BACK" Style="{StaticResource ButtonBack}"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="202,1707,0,78" Command="{Binding Preview}"/>
         <Button  Width="277" Height="132" Tag="NEXT"  Content="ДАЛЕЕ" Style="{StaticResource ButtonForward}" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Next}" Margin="596,1707,0,0"/>

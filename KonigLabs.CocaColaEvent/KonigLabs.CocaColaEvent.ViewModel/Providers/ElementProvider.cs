@@ -84,14 +84,14 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
             {
                 var defaultSizes = new List<TshortSize>()
                                     {
-                                            new TshortSize {
-                                                                Count= 1,
-                                                                Name="XXS"
-                                                            },
-                                            new TshortSize {
-                                                                Count= 1,
-                                                                Name="XS"
-                                                            },
+                                            //new TshortSize {
+                                            //                    Count= 1,
+                                            //                    Name="XXS"
+                                            //                },
+                                            //new TshortSize {
+                                            //                    Count= 1,
+                                            //                    Name="XS"
+                                            //                },
 
                                             new TshortSize {
                                                                 Count= 1,
@@ -109,10 +109,10 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                                                                 Count= 1,
                                                                 Name="XL"
                                                             },
-                                            new TshortSize {
-                                                                Count= 1,
-                                                                Name="XXL"
-                                                            },
+                                            //new TshortSize {
+                                            //                    Count= 1,
+                                            //                    Name="XXL"
+                                            //                },
                                     };
                 using (var s = File.Create(path))
                 {

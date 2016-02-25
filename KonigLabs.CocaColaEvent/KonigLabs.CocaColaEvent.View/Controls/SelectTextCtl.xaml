@@ -23,7 +23,7 @@
                         <ControlTemplate  TargetType="ListBoxItem">
                             <Grid Margin="15,0,15,0">
                                 <Rectangle Fill="White" Opacity="0.5" x:Name="IsCheck" Visibility="Hidden"/>
-                                <TextBlock Style="{StaticResource EngLabel}" FontSize="43" Text="{Binding Text}" TextWrapping="Wrap"  TextAlignment="Center"/>
+                                <TextBlock Style="{StaticResource EngLabel}" LineStackingStrategy="BlockLineHeight" LineHeight="40" FontSize="43" Text="{Binding Text}" TextWrapping="Wrap"  TextAlignment="Center"/>
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsSelected" Value="true">
