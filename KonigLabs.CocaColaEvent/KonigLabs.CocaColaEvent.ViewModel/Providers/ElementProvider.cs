@@ -41,11 +41,20 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
 
             var menSizes = new List<TshortSize>();
             var womenSizes = new List<TshortSize>();
-
+            string folderSize = "";
+            if (File.Exists(_resultPath))
+            {
+                using (var f = File.OpenText(_resultPath))
+                {
+                    var r = f.ReadLine();
+                    folderSize = f.ReadLine();
+                }
+            }
             //мужские размеры
-            menSizes =  GetSizes(_menPath, false);
+            menSizes = GetSizes(string.IsNullOrEmpty(folderSize) ? _menPath : Path.Combine(folderSize, _menPath), false);
             //женские размеры
-            womenSizes = GetSizes(_womenPath, true);
+
+            womenSizes = GetSizes(string.IsNullOrEmpty(folderSize) ? _womenPath : Path.Combine(folderSize, _womenPath), true);
             var types = new List<TshortType>();
             if (menSizes.Count > 0)
             {
