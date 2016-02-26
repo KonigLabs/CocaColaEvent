@@ -41,32 +41,12 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
 
             var menSizes = new List<TshortSize>();
             var womenSizes = new List<TshortSize>();
-            string folderSize = "";
-            if (File.Exists(_resultPath))
-            {
-                using (var f = File.OpenText(_resultPath))
-                {
-                    var r = f.ReadLine();
-                    folderSize = f.ReadLine();
-                }
-            }
             //мужские размеры
-            if (string.IsNullOrEmpty(folderSize))
-            {
-                menSizes = GetSizes(_menPath, false);
-                womenSizes = GetSizes(_womenPath, true);
-            }
-            else
-            {
-                _menPath = Path.Combine(folderSize, _menPath);
-                _womenPath = Path.Combine(folderSize, _womenPath);
-                menSizes = GetSizes(_menPath, false);
-                womenSizes = GetSizes(_womenPath, true);
-            }
-            //menSizes = GetSizes(string.IsNullOrEmpty(folderSize) ? _menPath : Path.Combine(folderSize, _menPath), false);
-            ////женские размеры
+            menSizes = GetSizes(_menPath, false);
+            womenSizes = GetSizes(_womenPath, true);
+            //женские размеры
+            womenSizes = GetSizes(_womenPath, true);
 
-            //womenSizes = GetSizes(string.IsNullOrEmpty(folderSize) ? _womenPath : Path.Combine(folderSize, _womenPath), true);
             var types = new List<TshortType>();
             if (menSizes.Count > 0)
             {
@@ -109,19 +89,19 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                     defaultSizes = new List<TshortSize>()
                                     {
                                             new TshortSize {
-                                                                Count= 1,
+                                                                Count= 1000,
                                                                 Name="S"
                                                             },
                                             new TshortSize {
-                                                                Count= 1,
+                                                                Count= 1000,
                                                                 Name="M"
                                                             },
                                             new TshortSize {
-                                                                Count= 1,
+                                                                Count= 1000,
                                                                 Name="L"
                                                             },
                                             new TshortSize {
-                                                                Count= 1,
+                                                                Count= 1000,
                                                                 Name="XL"
                                                             },
                                     };
@@ -131,23 +111,23 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                     defaultSizes = new List<TshortSize>()
                                     {
                                             new TshortSize {
-                                                                Count= 1,
+                                                                Count= 1000,
                                                                 Name="M"
                                                             },
                                             new TshortSize {
-                                                                Count= 1,
+                                                                Count= 1000,
                                                                 Name="L"
                                                             },
                                             new TshortSize {
-                                                                Count= 1,
+                                                                Count= 1000,
                                                                 Name="XL"
                                                             },
                                             new TshortSize {
-                                                                Count= 1,
+                                                                Count= 1000,
                                                                 Name="XXL"
                                                             },
                                             new TshortSize {
-                                                                Count= 1,
+                                                                Count= 1000,
                                                                 Name="3XL"
                                                             }
                     };
@@ -222,8 +202,6 @@ namespace KonigLabs.CocaColaEvent.ViewModel.Providers
                 if (!string.IsNullOrEmpty(folderSize))
                 {
                     _filePath = Path.Combine(folderSize, _filePath);
-                    _menPath = Path.Combine(folderSize, _menPath);
-                    _womenPath = Path.Combine(folderSize, _womenPath);
                 }
               
                 List<TshortDto> prints = new List<TshortDto>();
