@@ -13,7 +13,7 @@
         
         Title="Coca Cola" >
 
-    <controls:TransitioningContentControl BorderThickness="0" Transition="LeftReplaceTransition"   Content="{Binding Path=CurrentContent}">
+    <controls:TransitioningContentControl BorderThickness="0" Transition="LeftTransition"   Content="{Binding Path=CurrentContent}">
         <!--<controls:TransitioningContentControl.LayoutTransform>
             <ScaleTransform ScaleX="0.3" ScaleY="0.3"/>
         </controls:TransitioningContentControl.LayoutTransform>-->
